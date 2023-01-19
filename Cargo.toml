@@ -1,0 +1,22 @@
+[workspace]
+members = ["xtask"]
+
+[workspace.package]
+authors = ["Johan Planchon <johan@planchon.dev>"]
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+# Cli builder
+clap = "4.0.8"
+# Error handling
+eyre = "0.6"
+color-eyre = "0.6"
+# Helper to run linux commands
+duct = "0.13"
+
+[profile.release]
+lto = 'fat'
+opt-level = 3
+debug-assertions = false
