@@ -1,5 +1,5 @@
 [workspace]
-members = ["xtask"]
+members = ["xtask", "lib/*"]
 
 [workspace.package]
 authors = ["Johan Planchon <johan@planchon.dev>"]

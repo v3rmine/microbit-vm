@@ -1,0 +1,6 @@
+[package]
+name = "armv6-m"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
