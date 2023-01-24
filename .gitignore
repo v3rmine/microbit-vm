@@ -3,3 +3,6 @@
 
 # Build
 /dist
+
+# CI
+/.cargo/advisory-db/

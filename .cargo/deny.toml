@@ -105,7 +105,7 @@ unlicensed = "deny"
 allow = [
 	"MIT",
 	"Apache-2.0",
-	#"Unicode-DFS-2016",
+	"Unicode-DFS-2016",
 	#"Apache-2.0 WITH LLVM-exception",
 ]
 # List of explicitly disallowed licenses
@@ -115,7 +115,7 @@ deny = [
 	#"Nokia",
 ]
 # Lint level for licenses considered copyleft
-copyleft = "warn"
+copyleft = "allow"
 # Blanket approval or denial for OSI-approved or FSF Free/Libre licenses
 # * both - The license will be approved if it is both OSI-approved *AND* FSF
 # * either - The license will be approved if it is either OSI-approved *OR* FSF

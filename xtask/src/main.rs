@@ -63,7 +63,7 @@ fn main() -> Result<()> {
             cmd!(
                 "sh",
                 "-c",
-                format!("{cargo} about generate --config {workspace_root}/.cargo/about.toml --workspace {workspace_root}/.cargo/about.hbs -o LICENSE")
+                format!("{cargo} about generate --config {workspace_root}/.cargo/about.toml --workspace {workspace_root}/.cargo/about.hbs -o COMPILED_LICENSES")
             )
             .run()?;
             cmd!(
