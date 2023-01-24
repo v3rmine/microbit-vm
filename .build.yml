@@ -4,8 +4,6 @@ packages:
 tasks:
   - cargo-setup: |
       rustup toolchain add stable-x86_64-unknown-linux-gnu
-      rustup component add cargo --toolchain stable-x86_64-unknown-linux-gnu
-      rustup component add rustc --toolchain stable-x86_64-unknown-linux-gnu
   - deps-setup: |
       cd microbit-vm
       cargo xtask setup
