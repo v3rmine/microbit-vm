@@ -1,4 +1,7 @@
 /* === Memory === */
+use std::ops::Index;
+use std::slice::SliceIndex;
+
 /// Memory is addressed with 32 bits addresses
 pub const MEMORY_MAX_ADDRESSABLE_ADDRESS: u32 = u32::MAX;
 
@@ -15,6 +18,9 @@ pub struct Ipsr(u32);
 /// Execution Program Status Register
 /// <https://developer.arm.com/documentation/ddi0419/c/System-Level-Architecture/System-Level-Programmers--Model/Registers/The-special-purpose-program-status-registers--xPSR>
 pub struct Epsr(u32);
+
+/// Register count
+pub const R_COUNT: usize = 22;
 
 /// List of the registers:
 /// - General purpose registers R0-R12.
