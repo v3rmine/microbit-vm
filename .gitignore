@@ -6,3 +6,6 @@
 
 # CI
 /.cargo/advisory-db/
+
+# IntelliJ IDEs
+./.idea
