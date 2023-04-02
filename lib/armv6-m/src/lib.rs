@@ -65,6 +65,42 @@ pub enum Register {
     EPSR(Epsr),
 }
 
+/* === Condition flags === */
+
+/// Source: <https://developer.arm.com/documentation/ddi0419/c/Application-Level-Architecture/Thumb-Instruction-Details/Conditional-execution>
+pub enum ConditionFlag {
+    /// Equal
+    EQ = 0b0000,
+    /// Not equal
+    NE = 0b0001,
+    /// Carry set
+    CS = 0b0010,
+    /// Carry clear
+    CC = 0b0011,
+    /// Minus, negative
+    MI = 0b0100,
+    /// Plus, positive or zero
+    PL = 0b0101,
+    /// Overflow
+    VS = 0b0110,
+    /// No overflow
+    VC = 0b0111,
+    /// Unsigned higher
+    HI = 0b1000,
+    /// Unsigned lower or same
+    LS = 0b1001,
+    /// Signed greater than or equal
+    GE = 0b1010,
+    /// Signed less than
+    LT = 0b1011,
+    /// Signed greater than
+    GT = 0b1100,
+    /// Signed less than or equal
+    LE = 0b1101,
+    /// Always (unconditional), also called None
+    AL = 0b1110,
+}
+
 /* === Instruction set === */
 /// Source: <https://developer.arm.com/documentation/ddi0419/c/Application-Level-Architecture/The-ARMv6-M-Instruction-Set>
 #[allow(nonstandard_style)]
