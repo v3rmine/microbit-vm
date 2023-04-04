@@ -16,6 +16,12 @@ eyre = "0.6"
 color-eyre = "0.6"
 # Helper to run linux commands
 duct = "0.13"
+# Error creation
+thiserror = "1.0"
+# Binary Parser
+nom = "7.1"
+# Bit Vectors
+bitvec = "1"
 
 [profile.release]
 lto = 'fat'
