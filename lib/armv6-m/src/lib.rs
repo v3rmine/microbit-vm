@@ -1,24 +1,8 @@
 /* === Memory === */
-use std::ops::Index;
-use std::slice::SliceIndex;
-
 /// Memory is addressed with 32 bits addresses
-pub const MEMORY_MAX_ADDRESSABLE_ADDRESS: u32 = u32::MAX;
+pub const MEMORY_MAX_ADDRESSABLE_ADDRESS: usize = u32::MAX as usize;
 
 /* === Registers === */
-
-/// Application Program Status Register
-/// <https://developer.arm.com/documentation/ddi0419/c/System-Level-Architecture/System-Level-Programmers--Model/Registers/The-special-purpose-program-status-registers--xPSR>
-pub struct Apsr(u32);
-
-/// Interrupt Program Status Register
-/// <https://developer.arm.com/documentation/ddi0419/c/System-Level-Architecture/System-Level-Programmers--Model/Registers/The-special-purpose-program-status-registers--xPSR>
-pub struct Ipsr(u32);
-
-/// Execution Program Status Register
-/// <https://developer.arm.com/documentation/ddi0419/c/System-Level-Architecture/System-Level-Programmers--Model/Registers/The-special-purpose-program-status-registers--xPSR>
-pub struct Epsr(u32);
-
 /// Register count
 pub const R_COUNT: usize = 22;
 
@@ -37,39 +21,47 @@ pub const R_COUNT: usize = 22;
 ///
 /// Source: <https://developer.arm.com/documentation/ddi0419/c/System-Level-Architecture/System-Level-Programmers--Model/Registers>
 #[allow(nonstandard_style)]
+#[derive(Copy, Clone)]
 pub enum Register {
-    R0(u32),
-    R1(u32),
-    R2(u32),
-    R3(u32),
-    R4(u32),
-    R5(u32),
-    R6(u32),
-    R7(u32),
-    R8(u32),
-    R9(u32),
-    R10(u32),
-    R11(u32),
-    R12(u32),
+    R0,
+    R1,
+    R2,
+    R3,
+    R4,
+    R5,
+    R6,
+    R7,
+    R8,
+    R9,
+    R10,
+    R11,
+    R12,
     /// Stack Pointer register, banked version of SP (with SpProcess, described as R13), also described as MSP
-    SP_main(u32),
+    SP_main,
     /// Stack Pointer register, banked version of SP (with SpMain, described as R13), also described as PSP
-    SP_process(u32),
+    SP_process,
     /// The Link Register, also described as R14
-    LR(u32),
+    LR,
     /// The Program Counter, also described as R15
-    PC(u32),
+    PC,
     /// A mask register, used to manage the prioritization scheme for exceptions and interrupts
-    PRIMASK(u32),
+    PRIMASK,
     /// A control register, that identifies the current stack
-    CONTROL(u32),
+    CONTROL,
     /// Application Program Status Register
-    APSR(Apsr),
+    APSR,
     /// Interrupt Program Status Register
-    IPSR(Ipsr),
+    IPSR,
     /// Execution Program Status Register
-    EPSR(Epsr),
+    EPSR,
 }
+
+impl Register {
+    pub fn index(&self) -> usize {
+        *self as usize
+    }
+}
+
 
 /* === Condition flags === */
 
