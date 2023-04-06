@@ -1,6 +1,18 @@
 /* === Memory === */
 /// Memory is addressed with 32 bits addresses
-pub const MEMORY_MAX_ADDRESSABLE_ADDRESS: u32 = u32::MAX;
+pub const MEMORY_MAX_ADDRESSABLE_ADDRESS: u32 = u32::MAX; // aka 4 294 967 295
+
+/// Max ROM memory
+pub const MAX_ROM: u32 = 256 * 1024;
+
+/// ROM physical address in memory
+pub const ROM_PHYSICAL_ADDRESS: u32 = 0x00000000;
+
+/// Max RAM memory
+pub const MAX_RAM: u32 = 16 * 1024;
+
+/// RAM physical address in memory
+pub const RAM_PHYSICAL_ADDRESS: u32 = 0x20000000;
 
 /* === Registers === */
 
