@@ -1,8 +1,8 @@
 use std::rc::Rc;
 
-pub trait MemoryMutation {
-    fn apply(on: &mut [u8]);
-    fn rollback(on: &mut [u8]);
+pub trait MemoryMutation<R: Runtime> {
+    fn apply(&self, on: &mut R);
+    fn rollback(&self, on: &mut R);
 }
 
 pub trait Runtime
@@ -10,13 +10,18 @@ where
     Self: Sized,
 {
     type Error: std::error::Error;
-    type Mutation: MemoryMutation;
+    type Mutation: MemoryMutation<Self>;
+    // type Register;
 
     fn init() -> Self;
 
     fn load_file(&mut self, path: &str) -> Result<&mut Self, Self::Error>;
     fn load_hex(&mut self, hex: &str) -> Result<&mut Self, Self::Error>;
     fn load_bytes(&mut self, bytes: &[u8]) -> Result<&mut Self, Self::Error>;
+
+    // NOTE: Useless ?
+    // fn get_register(&self, register: usize) -> Self::Register;
+    // fn set_register(&mut self, register: usize, data: Self::Register) -> Result<&mut Self, Self::Error>;
 
     fn get_memory(&self) -> Rc<[u8]>;
     fn get_mutations_history(&self) -> Rc<[Self::Mutation]>;

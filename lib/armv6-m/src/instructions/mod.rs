@@ -4,4 +4,4 @@ macro_rules! export_mod {
     };
 }
 
-export_mod!(add);
+export_mod!(add, pop, push);

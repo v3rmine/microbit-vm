@@ -44,7 +44,7 @@ pub enum Add {
     },
 }
 
-pub(crate) fn parse_add(i: &[u8]) -> IResult<&'_ [u8], Add> {
+pub fn parse_add(i: &[u8]) -> IResult<&'_ [u8], Add> {
     // Immediate
     let parse_immediate_t1 = parse_bits!(
         (0b0001110, 7u8),
@@ -114,12 +114,12 @@ pub(crate) fn parse_add(i: &[u8]) -> IResult<&'_ [u8], Add> {
     )(i)
 }
 
-impl MemoryMutation for Add {
-    fn apply(_on: &mut [u8]) {
+impl MemoryMutation<crate::Armv6M> for Add {
+    fn apply(&self, _on: &mut crate::Armv6M) {
         todo!()
     }
 
-    fn rollback(_on: &mut [u8]) {
+    fn rollback(&self, _on: &mut crate::Armv6M) {
         todo!()
     }
 }
