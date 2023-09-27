@@ -8,11 +8,11 @@ pub mod structure;
 mod macros;
 
 struct Armv6M {
-    memory: [u32; structure::MEMORY_MAX_ADDRESSABLE_ADDRESS],
+    memory: [u8; structure::MEMORY_MAX_ADDRESSABLE_ADDRESS],
 
     // NOTE: Generic ARM Registers
     registers: [u32; 13],
-    
+
     // Point to SP_main or to SP_process
     sp: usize,
     // Link Register
@@ -48,21 +48,36 @@ macro_rules! set_register_generator {
     };
 }
 
-
 impl Armv6M {
     get_register_generator!(
-        (get_r0,0), (get_r1,1), (get_r2,2), 
-        (get_r3,3), (get_r4,4), (get_r5,5), 
-        (get_r6,6), (get_r7,7), (get_r8,8), 
-        (get_r9,9), (get_r10,10), (get_r11,11), 
-        (get_r12,12)
+        (get_r0, 0),
+        (get_r1, 1),
+        (get_r2, 2),
+        (get_r3, 3),
+        (get_r4, 4),
+        (get_r5, 5),
+        (get_r6, 6),
+        (get_r7, 7),
+        (get_r8, 8),
+        (get_r9, 9),
+        (get_r10, 10),
+        (get_r11, 11),
+        (get_r12, 12)
     );
     set_register_generator!(
-        (set_r0,0), (set_r1,1), (set_r2,2), 
-        (set_r3,3), (set_r4,4), (set_r5,5), 
-        (set_r6,6), (set_r7,7), (set_r8,8), 
-        (set_r9,9), (set_r10,10), (set_r11,11), 
-        (set_r12,12)
+        (set_r0, 0),
+        (set_r1, 1),
+        (set_r2, 2),
+        (set_r3, 3),
+        (set_r4, 4),
+        (set_r5, 5),
+        (set_r6, 6),
+        (set_r7, 7),
+        (set_r8, 8),
+        (set_r9, 9),
+        (set_r10, 10),
+        (set_r11, 11),
+        (set_r12, 12)
     );
 }
 
